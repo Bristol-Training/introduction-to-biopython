@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this section we’ll be looking at the functionality that Biopython provides for reading and writing files. This is all handled by the <code>Bio.SeqIO</code> module so let’s start by importing it:</p>
-<div id="f6b5d994" class="cell" data-execution_count="1">
+<div id="9921074a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="files-for-this-section" class="level4">
@@ -265,7 +265,7 @@ CAGTCAGTCAGTCAGTCAGAGTCAGTCAGTC
 AGTCAGTCAGTCATCGATCGATCGATCGACT</code></pre>
 </div>
 </div>
-<div id="34d60000" class="cell" data-execution_count="2">
+<div id="947f157a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> SeqIO.read(<span class="st">"V01408.1.fasta"</span>, <span class="st">"fasta"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -312,9 +312,9 @@ Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 A list of database cross-references as strings.
 </dl>
 <p>So you can get the <code>Seq</code> object fom inside the record with:</p>
-<div id="0dbfec8c" class="cell" data-execution_count="3">
+<div id="3c8c6180" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 </div>
 </div>
@@ -343,51 +343,51 @@ Answer
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="7ecf8c1a" class="cell" data-execution_count="4">
+<div id="0de7df88" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 </div>
 </div>
-<div id="af7ca92e" class="cell" data-execution_count="5">
+<div id="ea64478b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tm.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'ENA|V01408|V01408.1'</code></pre>
 </div>
 </div>
-<div id="6e68d4f8" class="cell" data-execution_count="6">
+<div id="4a388339" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tm.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'ENA|V01408|V01408.1'</code></pre>
 </div>
 </div>
-<div id="a92eb1d7" class="cell" data-execution_count="7">
+<div id="fa7f56e3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tm.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'ENA|V01408|V01408.1 Tobacco mosaic virus genome (variant 1)'</code></pre>
 </div>
 </div>
-<div id="dcbce7e3" class="cell" data-execution_count="8">
+<div id="d424c0b4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tm.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{}</code></pre>
 </div>
 </div>
-<div id="09ee3cf2" class="cell" data-execution_count="9">
+<div id="24bb937b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tm.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>{}</code></pre>
 </div>
 </div>
-<div id="7a030b8f" class="cell" data-execution_count="10">
+<div id="d11f438e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tm.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[]</code></pre>
 </div>
 </div>
-<div id="3a4b0263" class="cell" data-execution_count="11">
+<div id="32c820bf" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tm.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>[]</code></pre>
 </div>
 </div>
@@ -398,7 +398,7 @@ Answer
 <section id="reading-in-multiple-sequences" class="level3">
 <h3 class="anchored" data-anchor-id="reading-in-multiple-sequences">Reading in multiple sequences</h3>
 <p>It is very common to have files which contain multiple sequences. Biopython provides an interface to read these in, one after another which is the <code>SeqIO.parse</code> function. This provides you with an object which you can loop over with a <code>for</code> loop:</p>
-<div id="d3a5e4d8" class="cell" data-execution_count="12">
+<div id="2e2cd8cc" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -435,7 +435,7 @@ Answer
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="d621771b" class="cell" data-execution_count="13">
+<div id="d110a38f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">len</span>(record.seq), <span class="st">" -"</span>, record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -450,7 +450,7 @@ Answer
 </div>
 </div>
 <p>The type of the object returned by <code>SeqIO.parse</code> is known as a <em>generator</em>. One of the features of a generator in Python is that you can only loop over them once before they are <em>exhausted</em>. For example you can loop over them once without issue:</p>
-<div id="22d43a00" class="cell" data-execution_count="14">
+<div id="ecbeb0f0" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -458,7 +458,7 @@ Answer
 </div>
 </div>
 <p>But if you try to use the same object again, you will see that you get nothing back:</p>
-<div id="b5e3aea6" class="cell" data-execution_count="15">
+<div id="cfa7a682" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[]</code></pre>
@@ -466,14 +466,14 @@ Answer
 </div>
 <p>The reason for this is that it allows you to access, one at a time, a very long list of sequences, potentially more than can fit in memory at once since it only loads them one at a time.</p>
 <p>If you know you have a short set of sequences (as we have in this tutorial) then you can load them all into a Python list and access them however you wish:</p>
-<div id="f4b5052b" class="cell" data-execution_count="16">
+<div id="4dc0a8a4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="bu">list</span>(SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>))</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['gi|2765658|emb|Z78533.1|CIZ78533', 'gi|2765657|emb|Z78532.1|CCZ78532', 'gi|2765656|emb|Z78531.1|CFZ78531', 'gi|2765655|emb|Z78530.1|CMZ78530', 'gi|2765654|emb|Z78529.1|CLZ78529']</code></pre>
 </div>
 </div>
-<div id="01309e0b" class="cell" data-execution_count="17">
+<div id="6a1eaa44" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['gi|2765658|emb|Z78533.1|CIZ78533', 'gi|2765657|emb|Z78532.1|CCZ78532', 'gi|2765656|emb|Z78531.1|CFZ78531', 'gi|2765655|emb|Z78530.1|CMZ78530', 'gi|2765654|emb|Z78529.1|CLZ78529']</code></pre>
@@ -483,17 +483,17 @@ Answer
 <section id="genbank-files" class="level3">
 <h3 class="anchored" data-anchor-id="genbank-files">Genbank files</h3>
 <p>As well as FASTA files, Biopython can read GenBank files. All you need to do is specify the filetype when calling the <code>SeqIO.parse</code> function. If you pass <code>"genbank"</code> (or <code>"gb"</code>) as the second argument then it will read it as a GenBankfile:</p>
-<div id="556d445e" class="cell" data-execution_count="18">
+<div id="b487a7a2" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>record_iterator <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you are loading a file with multiple sequences in, you can grab just the first one with Python’s <a href="https://docs.python.org/3/library/functions.html#next"><code>next</code></a> function. This gives you whatever would be available the first time around the loop:</p>
-<div id="59e54c14" class="cell" data-execution_count="19">
+<div id="d7621f28" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>first_record <span class="op">=</span> <span class="bu">next</span>(record_iterator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>GenBank files usually contain a lot more information than a FASTA so more of the fields of the <code>SeqRecord</code> will be filled in. This means that we can, for example, see the annotations that the sequecne has:</p>
-<div id="681cf00b" class="cell" data-execution_count="20">
+<div id="0623699e" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>{'molecule_type': 'DNA',
  'topology': 'linear',
  'data_file_division': 'PLN',
@@ -549,39 +549,39 @@ Answer
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="6893b96c" class="cell" data-execution_count="21">
+<div id="b97d7de3" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>first_record.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>Seq('CGTAACAAGGTTTCCGTAGGTGAACCTGCGGAAGGATCATTGATGAGACCGTGG...CGC')</code></pre>
 </div>
 </div>
-<div id="500f8cb4" class="cell" data-execution_count="22">
+<div id="209ea5cd" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>first_record.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>'Z78533.1'</code></pre>
 </div>
 </div>
-<div id="a71a4e35" class="cell" data-execution_count="23">
+<div id="35cbfd24" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>first_record.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="87">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>'Z78533'</code></pre>
 </div>
 </div>
-<div id="906b1b2a" class="cell" data-execution_count="24">
+<div id="9e60e10a" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>first_record.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="88">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>'C.irapeanum 5.8S rRNA gene and ITS1 and ITS2 DNA'</code></pre>
 </div>
 </div>
-<div id="d0c42e4d" class="cell" data-execution_count="25">
+<div id="3533bd96" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>first_record.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="89">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>{}</code></pre>
 </div>
 </div>
-<div id="05a746b9" class="cell" data-execution_count="26">
+<div id="30eedb1d" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="90">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>{'molecule_type': 'DNA',
  'topology': 'linear',
  'data_file_division': 'PLN',
@@ -612,9 +612,9 @@ Answer
   Reference(title='Direct Submission', ...)]}</code></pre>
 </div>
 </div>
-<div id="a9f3cefc" class="cell" data-execution_count="27">
+<div id="2f2dfcf2" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>first_record.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="91">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>[SeqFeature(SimpleLocation(ExactPosition(0), ExactPosition(740), strand=1), type='source', qualifiers=...),
  SeqFeature(SimpleLocation(ExactPosition(0), ExactPosition(380), strand=1), type='misc_feature', qualifiers=...),
  SeqFeature(SimpleLocation(ExactPosition(380), ExactPosition(550), strand=1), type='gene', qualifiers=...),
@@ -622,9 +622,9 @@ Answer
  SeqFeature(SimpleLocation(ExactPosition(550), ExactPosition(740), strand=1), type='misc_feature', qualifiers=...)]</code></pre>
 </div>
 </div>
-<div id="1d4182d3" class="cell" data-execution_count="28">
+<div id="af0c5504" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>first_record.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="92">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>[]</code></pre>
 </div>
 </div>
@@ -633,7 +633,7 @@ Answer
 </div>
 <p>We’ve talked about using <code>Bio.SeqIO.parse</code> for sequence input (reading files), and now we’ll look at <code>Bio.SeqIO.write</code> which is for sequence output (writing files). This is a function taking three arguments: some <code>SeqRecord</code> objects, a handle or filename to write to, and a sequence format.</p>
 <p>Here is an example, where we start by creating a few <code>SeqRecord</code> objects the hard way (by hand, rather than by loading them from a file):</p>
-<div id="7c5c5080" class="cell" data-execution_count="29">
+<div id="36f50c3d" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -660,9 +660,9 @@ Answer
 <span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>my_records <span class="op">=</span> [rec1, rec2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have a list of <code>SeqRecord</code> objects, we’ll write them to a FASTA format file:</p>
-<div id="896bb9c1" class="cell" data-execution_count="30">
+<div id="c6876ede" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>SeqIO.write(my_records, <span class="st">"my_example.faa"</span>, <span class="st">"fasta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>2</code></pre>
 </div>
 </div>
@@ -693,7 +693,7 @@ Answer
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To save a <em>GenBank</em> file we will need to define an annotation for ‘molecule_type’</p>
-<div id="7c04edf2" class="cell" data-execution_count="31">
+<div id="3a8ebe06" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,9 +721,15 @@ Answer
 <span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>my_records <span class="op">=</span> [rec1, rec2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8db37720" class="cell" data-execution_count="32">
+<div id="99ac0ba0" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>SeqIO.write(my_records, <span class="st">"my_example.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="96">
+<div class="cell-output cell-output-stderr">
+<pre><code>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/InsdcIO.py:759: BiopythonWarning:
+
+Increasing length of locus line to allow long name. This will result in fields that are not in usual positions.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>2</code></pre>
 </div>
 </div>

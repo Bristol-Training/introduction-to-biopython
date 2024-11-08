@@ -274,9 +274,9 @@ TTAGATACAGGAGCAGATGATACAGTATTAGAAGAAAT</code></pre>
 <section id="single-alignments" class="level4">
 <h4 class="anchored" data-anchor-id="single-alignments">Single alignments</h4>
 <p>Let’s start with a single alignments file which contains the seed alignment for the Phage_Coat_Gp8 (PF05371) PFAM entry. The file contains a lot of annotation information but let’s just go ahead and load it in to see how it looks:</p>
-<div id="ee7e1eea" class="cell" data-execution_count="1">
+<div id="1df6529e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aln_seed <span class="op">=</span> AlignIO.read(<span class="st">"data/PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aln_seed <span class="op">=</span> AlignIO.read(<span class="st">"PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(aln_seed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Alignment with 7 rows and 52 columns
@@ -290,7 +290,7 @@ FAADDATSQAKAAFDSLTAQATEMSGYAWALVVLVVGATVGIKL...SRA COATB_BPIF1/22-73</code></pre
 </div>
 </div>
 <p>Note in the above output the sequences have been elided in the middle (<code>...</code>). We could instead write our own code to format this as we please by iterating over the rows as <code>SeqRecord</code> objects and printing the first 50 values of each sequence:</p>
-<div id="b253fa09" class="cell" data-execution_count="2">
+<div id="818eeabb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> aln_seed:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>record<span class="sc">.</span>seq[:<span class="dv">50</span>]<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>record<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -309,8 +309,8 @@ FAADDATSQAKAAFDSLTAQATEMSGYAWALVVLVVGATVGIKLFKKFVS - COATB_BPIF1/22-73</code></p
 <h4 class="anchored" data-anchor-id="multiple-alignments">Multiple Alignments</h4>
 <p>In general alignment files can contain multiples alignments, and to read these files we must use the <code>AlignIO.parse</code> function.</p>
 <p>We have previously downloaded a file called <code>dummy_aln.phy</code> which contains some dummy alignment information in PHYLIP format. If we wanted to read this in using <code>AlignIO</code> we could use:</p>
-<div id="53b98538" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aln_dummy <span class="op">=</span> AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>)</span>
+<div id="c31b22cb" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aln_dummy <span class="op">=</span> AlignIO.parse(<span class="st">"dummy_aln.phy"</span>, <span class="st">"phylip"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alignment <span class="kw">in</span> aln_dummy:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(alignment)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -339,8 +339,8 @@ CCCAAC Epsilon
 </div>
 </div>
 <p>The <code>.parse()</code> function returns an iterator. If we want to keep all the alignments in memory at once, then we need to turn the iterator into a list, just as we did with <code>SeqIO.parse</code>:</p>
-<div id="35101e7f" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alignments <span class="op">=</span> <span class="bu">list</span>(AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>))</span>
+<div id="407d1dd0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alignments <span class="op">=</span> <span class="bu">list</span>(AlignIO.parse(<span class="st">"dummy_aln.phy"</span>, <span class="st">"phylip"</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>second_aln <span class="op">=</span> alignments[<span class="dv">1</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second_aln)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -359,7 +359,7 @@ CCCAAA Epsilon</code></pre>
 <p>Now we’ll look at <code>AlignIO.write()</code> which is for alignments output (writing files).</p>
 <p>This function takes 3 arguments: - Some <code>MultipleSeqAlignment</code> objects - A string specifying a handle or a filename to write to - A lower case string specifying the sequence format.</p>
 <p>We start by creating a <code>MultipleSeqAlignment</code> object the hard way (by hand). Note we create some <code>SeqRecord</code> objects to construct the alignment from.</p>
-<div id="37664b45" class="cell" data-execution_count="5">
+<div id="eecd4f6b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Align <span class="im">import</span> MultipleSeqAlignment</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
@@ -380,7 +380,7 @@ ACTGCTAGDTAG tata</code></pre>
 </div>
 </div>
 <p>Now let’s try to output, in PHYLIP format, these alignments in a file with the Phage_Coat_Gp8 alignments.</p>
-<div id="1b6c4251" class="cell" data-execution_count="6">
+<div id="5e90d31e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_alignments <span class="op">=</span> [align1, aln_seed]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>AlignIO.write(my_alignments, <span class="st">"mixed.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -412,9 +412,9 @@ Answer
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="0e9bdc20" class="cell" data-execution_count="7">
+<div id="fc585140" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>aln_pf05371 <span class="op">=</span> <span class="bu">list</span>( AlignIO.parse(<span class="st">"data/PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>) )</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>aln_pf05371 <span class="op">=</span> <span class="bu">list</span>( AlignIO.parse(<span class="st">"PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>) )</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>AlignIO.write(aln_pf05371, <span class="st">"pf05371.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>1</code></pre>
