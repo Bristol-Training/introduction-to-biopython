@@ -1,0 +1,14 @@
+---
+title: Summary
+---
+
+This course has been an introduction to the tools that Biopython provides for doing bioinformatics. It is a very extensive tool suite so we would recommend you spending some time investigting what it can do.
+
+An excellent starting point is [the official Biopython tutorial](https://biopython.org/DIST/docs/tutorial/Tutorial.html).
+
+Other things to look in to:
+
+- Running BLAST locally or online with [`Bio.BLAST`](https://biopython.org/docs/latest/api/Bio.Blast.html) - [tutorial chapter](https://biopython.org/DIST/docs/tutorial/Tutorial.html#sec119)
+- Phylogenetics with [`Bio.Phylo`](https://biopython.org/docs/latest/api/Bio.Phylo.html) - [tutorial chapter](https://biopython.org/DIST/docs/tutorial/Tutorial.html#sec249)
+- Cluster analysis with [`Bio.Cluster`](https://biopython.org/docs/latest/api/Bio.Cluster.html) - [tutorial chapter](https://biopython.org/DIST/docs/tutorial/Tutorial.html#sec288)
+

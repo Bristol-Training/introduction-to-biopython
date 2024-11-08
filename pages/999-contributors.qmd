@@ -1,0 +1,11 @@
+---
+title: Contributors
+---
+
+
+This course was written by Matt Williams, see <https://milliams.com/courses/intermediate_python/>, based on the [official Biopython tutorial](https://biopython.org/DIST/docs/tutorial/Tutorial.html). All text is published under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) with all code snippets licensed as MIT.
+
+The alignment section was heavily based on the [Concordia Python workshop](https://github.com/mbourgey/Concordia_Workshop_Biopython#multiple-alignment-sequences) by Mathieu Bourgey which is licensed with the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US).
+
+
+The course has since been modified by the Jean Golding Institute. 

@@ -1,0 +1,196 @@
+---
+title: Online databases
+---
+
+
+Biopython can [work with many online resources](https://biopython.org/DIST/docs/tutorial/Tutorial.html). What follows here is a summary of some of the key points to start using online databases.
+
+The `Bio.Entrez` module give you access from Python to the NCBI's online databases. Before you start using it, there are a few things to be aware of:
+
+- It is recommended that for any series of more than *100* requests, do this at weekends or outside USA peak times.
+- Use the `email` parameter so the NCBI can contact you if there is a problem. You can set a global email address:
+  ```{python}
+  from Bio import Entrez
+  Entrez.email = "ab01234@bristol.ac.uk"
+  ```
+
+## EInfo - Obtaining information about the Entrez databases
+
+Let's start with the *EInfo* utility. This allows you to ask the service for its list of available databases:
+
+
+```python
+from Bio import Entrez
+Entrez.email = "ab01234@bristol.ac.uk"  # Always tell NCBI who you are
+
+handle = Entrez.einfo()
+result = Entrez.read(handle)
+print(result["DbList"])
+```
+
+```{python}
+#| echo: false
+handle = Entrez.einfo()
+result = Entrez.read(handle)
+print(result["DbList"])
+```
+
+
+We can see, for example, the "pubmed", "protein" and "nuccore" databases.
+
+You can delve into any one of the databases individually by passing the name of it to the `einfo` function. For example, you can ask it for the valid list of query fields which we will be able to use shortly:
+
+
+```{python}
+handle = Entrez.einfo(db="nucleotide")
+result = Entrez.read(handle)
+
+for f in result["DbInfo"]["FieldList"]:
+    print(f["Name"], f["Description"])
+```
+
+
+
+::: {#exampleN .callout-note icon=false title='Exercise'}
+Look at the database information for another database. What are the valid list of search fields there?
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+```{python}
+from Bio import Entrez
+Entrez.email = "ab01234@bristol.ac.uk" 
+
+handle = Entrez.einfo(db="pubmed")
+result = Entrez.read(handle)
+
+for f in result["DbInfo"]["FieldList"]:
+    print(f["Name"], f["Description"])
+```
+:::
+
+
+
+
+## ESearch - Searching the Entrez databases
+
+You can also use ESearch to search GenBank. Here we’ll do a search for the *matK* gene in *Cypripedioideae* orchids. We specify the database we want to search, the search terms (based on the fields we found out about earlier) and pass the `idtype` argument to specify what we want to have returned as the `.id` field:
+
+
+```{python}
+handle = Entrez.esearch(db="nucleotide", term="Cypripedioideae[Orgn] AND matK[Gene]", idtype="acc")
+record = Entrez.read(handle)
+record["IdList"]
+```
+
+Each of the IDs (`NC_087860.1`, `PP503063.1`, ...) is a GenBank identifier (Accession number). We'll see shortly how to actually download these GenBank records.
+
+
+::: {#exampleN .callout-note icon=false title='Exercise'}
+Try searching for another gene or organism and print its ID list. If you don't know of another then just try replicating the code above.
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+```{python}
+handle = Entrez.esearch(db="nucleotide", term="homo sapiens[Orgn] AND tp53[Gene]", idtype="acc")
+record = Entrez.read(handle)
+record["IdList"]
+```
+
+Homo sapiens tumor protein p53 (TP53) NCBI Reference Sequence: NG_017013.2
+<https://www.ncbi.nlm.nih.gov/nuccore/383209646>
+
+:::
+
+
+
+## EFetch - Downloading full records from Entrez
+
+EFetch is what you use when you want to retrieve a full record from Entrez. This covers several possible databases, as described on the main [EFetch help page](https://www.ncbi.nlm.nih.gov/books/NBK3837/).
+
+For most of their databases, the NCBI support several different file formats. Requesting a specific file format from Entrez using `Bio.Entrez.efetch` requires specifying the `rettype` and/or `retmode` optional arguments. The different combinations are described for each database type on the pages linked to on [NCBI efetch webpage](https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch).
+
+One common usage is downloading sequences in the FASTA or GenBank/GenPept plain text formats (which can then be parsed with `Bio.SeqIO`). From the Cypripedioideae example above, we can download GenBank record `NC_050871.1` using `Bio.Entrez.efetch`.
+
+We specify the database we want to fetch from, the ID returned from the search, the return type of the data (FASTA, GenBank etc.) and that we want the result as plain text:
+
+
+```{python}
+handle = Entrez.efetch(db="nucleotide", id="NC_050871.1", rettype="gb", retmode="text")
+```
+
+This has given us a handle which we can pass to `Bio.SeqIO.read` in place of the filename:
+
+
+```{python}
+from Bio import SeqIO
+SeqIO.read(handle, "genbank")
+```
+
+
+
+
+If you want to download the file and save a copy of it on disk, you can write the result to file with:
+
+
+```{python}
+handle = Entrez.efetch(db="nucleotide", id="NC_050871.1", rettype="gb", retmode="text")
+record = SeqIO.read(handle, "genbank")
+SeqIO.write(record, "NC_050871.gbk", "genbank")
+```
+
+
+
+
+::: {#exampleN .callout-note icon=false title='Exercise'}
+Using one of the results from exercise above, download the full record and save it to a file. Then load it from the local file using `SeqIO.read`.
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+
+```{python}
+handle = Entrez.efetch(db="nucleotide", id="NG_017013.2", rettype="gb", retmode="text")
+
+SeqIO.read(handle, "genbank")
+handle = Entrez.efetch(db="nucleotide", id="NC_050871.1", rettype="gb", retmode="text")
+record = SeqIO.read(handle, "genbank")
+SeqIO.write(record, "NG_017013.gbk", "genbank")
+
+print(record)
+```
+
+:::
+
+
+<!--
+##### The Bio.Entrez.egquery function is deprecated and will be removed 
+##### in a future release of Biopython because the underlying NCBI
+##### EGQuery API is no longer maintained.
+
+## EGQuery-  Global Query, counts for search terms
+
+EGQuery provides counts for a search term in each of the Entrez databases (i.e. a global query). This is particularly useful to find out how many items your search terms would find in each database without actually performing lots of separate searches with `ESearch`.
+
+In this example, we use `Bio.Entrez.egquery` to obtain the counts for "Biopython":
+
+
+```{.python}
+handle = Entrez.egquery(term="biopython")
+record = Entrez.read(handle)
+for row in record["eGQueryResult"]:
+    print(row["DbName"], row["Count"])
+```
+
+::: {#exampleN .callout-note icon=false title='Exercise'}
+Run a global query for an organism name to find out how many matches there are in the various databases.
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+```{.python}
+handle = Entrez.egquery(term="homo sapiens")
+record = Entrez.read(handle)
+for row in record["eGQueryResult"]:
+    print(row["DbName"], row["Count"])
+```
+:::
+
+-->

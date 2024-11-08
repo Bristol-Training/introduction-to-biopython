@@ -1,0 +1,113 @@
+---
+title: Sequences
+---
+
+
+
+The main class to get to grips with in Biopython is `Seq`. This is the primary interface to sequence data that you will work with. It is imported as:
+
+
+```{python}
+from Bio.Seq import Seq
+```
+
+Once you have the `Seq` class, you can create sequences from standard Python strings:
+
+
+```{python}
+my_dna = Seq("AGTACACTGGTT")
+```
+
+## DNA operations
+
+Once you have the DNA in a `Seq` object, you can perform standard operations on it, such as getting the complement of the sequence:
+
+
+```{python}
+my_dna.complement()
+```
+
+
+and the reverse complement:
+
+
+```{python}
+my_dna.reverse_complement()
+```
+
+
+## RNA
+
+You can get the corresponding RNA sequence from a DNA sequence by using the `transcribe` method:
+
+
+```{python}
+my_rna = my_dna.transcribe()
+my_rna
+```
+
+Once you have an RNA sequence, you can again do standard operations on it, such as getting the complement:
+
+
+```{python}
+my_rna.complement_rna()
+```
+
+
+It is also possible to convert back from an RNA sequence to a DNA sequence:
+
+
+```{python}
+my_dna_from_rna = my_rna.back_transcribe()
+```
+
+Which, if it's working correctly should give us back the original data:
+
+
+```{python}
+my_dna == my_dna_from_rna
+```
+
+
+
+## Translation
+
+Once we have an RNA sequence, you can get the expressed protein with `translate`:
+
+
+```{python}
+my_protein = my_rna.translate()
+my_protein
+```
+
+
+
+::: {#exampleN .callout-note icon=false title='Exercise'}
+
+Given a particular sequence
+
+```{python}
+new_seq = Seq("AAATGGCAAAA")
+```
+
+Use the [Biopython documentation](https://biopython.org/docs/1.80/api/Bio.Seq.html) to discover how you can count how many time the subsequence `AA` is present.
+
+Do you get the count you expect? Can you find the way to count *all* instances of `AA`, even those that overlap?
+
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+
+Counting non-overlapping `AA`
+```{python}
+new_seq = Seq("AAATGGCAAAA")
+new_seq.count(Seq("AA"))
+```
+
+For an overlapping search of `AA`
+```{python}
+new_seq = Seq("AAATGGCAAAA")
+new_seq.count_overlap("AA")
+```
+
+:::
