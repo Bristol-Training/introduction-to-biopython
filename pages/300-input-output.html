@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this section we’ll be looking at the functionality that Biopython provides for reading and writing files. This is all handled by the <code>Bio.SeqIO</code> module so let’s start by importing it:</p>
-<div id="7702af61" class="cell" data-execution_count="1">
+<div id="e828d993" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="files-for-this-section" class="level4">
@@ -265,51 +265,15 @@ CAGTCAGTCAGTCAGTCAGAGTCAGTCAGTC
 AGTCAGTCAGTCATCGATCGATCGATCGACT</code></pre>
 </div>
 </div>
-<div id="2ea49f71" class="cell" data-execution_count="2">
+<div id="04de043f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tm <span class="op">=</span> SeqIO.read(<span class="st">"V01408.1.fasta"</span>, <span class="st">"fasta"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[2], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> tm <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">V01408.1.fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">      2</span> <span style="color:rgb(0,135,0)">print</span>(tm)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:672</span>, in <span class="ansi-cyan-fg">read</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    632</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">read</span>(handle, <span style="color:rgb(0,135,0)">format</span>, alphabet<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
-<span class="ansi-green-fg ansi-bold">    633</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""Turn a sequence file into a single SeqRecord.</span>
-<span class="ansi-green-fg ansi-bold">    634</span> 
-<span class="ansi-green-fg ansi-bold">    635</span> <span style="font-style:italic;color:rgb(175,0,0)">    Arguments:</span>
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">    670</span> <span style="font-style:italic;color:rgb(175,0,0)">    to read multiple records from the handle.</span>
-<span class="ansi-green-fg ansi-bold">    671</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
-<span class="ansi-green-fg">--&gt; 672</span>     iterator <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">alphabet</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    673</span>     <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg ansi-bold">    674</span>         record <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">next</span>(iterator)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/FastaIO.py:187</span>, in <span class="ansi-cyan-fg">FastaIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    185</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> alphabet <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    186</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 187</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'V01408.1.fasta'</pre>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ID: ENA|V01408|V01408.1
+Name: ENA|V01408|V01408.1
+Description: ENA|V01408|V01408.1 Tobacco mosaic virus genome (variant 1)
+Number of features: 0
+Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 </div>
 </div>
 <p>The <code>read</code> functions returns an object called a <code>SeqRecord</code>. These are like the <code>Seq</code>s that we saw before but have additional information associated with them. A full list of these are:</p>
@@ -348,17 +312,10 @@ File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3
 A list of database cross-references as strings.
 </dl>
 <p>So you can get the <code>Seq</code> object fom inside the record with:</p>
-<div id="ffca9e75" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[3], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>seq
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
-</div>
+<div id="ed51b49d" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 </div>
 </div>
 <div id="exampleN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -386,108 +343,52 @@ Answer
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="9c63ea53" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[4], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>seq
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="8a4d83c7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tm.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Seq('GTATTTTTACAACAATTACCAACAACAACAAACAACAAACAACATTACAATTAC...CCA')</code></pre>
 </div>
 </div>
-</div>
-<div id="38541a01" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tm.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[5], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>id
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="edc4376c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tm.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>'ENA|V01408|V01408.1'</code></pre>
 </div>
 </div>
-</div>
-<div id="59c9f261" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tm.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[6], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>name
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="3bc55bfa" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tm.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'ENA|V01408|V01408.1'</code></pre>
 </div>
 </div>
-</div>
-<div id="13cb5d7b" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tm.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[7], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>description
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="b2ff1eb2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tm.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>'ENA|V01408|V01408.1 Tobacco mosaic virus genome (variant 1)'</code></pre>
 </div>
 </div>
-</div>
-<div id="64c09d80" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tm.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[8], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>letter_annotations
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="bfa908ca" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tm.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>{}</code></pre>
 </div>
 </div>
-</div>
-<div id="1c9d69d3" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tm.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[9], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>annotations
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="9702d020" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tm.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>{}</code></pre>
 </div>
 </div>
-</div>
-<div id="4ab0f209" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tm.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[10], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>features
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
+<div id="11dd6773" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tm.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[]</code></pre>
 </div>
 </div>
-</div>
-<div id="4fef595f" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tm.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[11], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">tm</span><span style="color:rgb(98,98,98)">.</span>dbxrefs
-
-<span class="ansi-red-fg">NameError</span>: name 'tm' is not defined</pre>
-</div>
+<div id="8ef8b51b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tm.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[]</code></pre>
 </div>
 </div>
 </div>
@@ -497,39 +398,15 @@ Cell <span class="ansi-green-fg">In[11], line 1</span>
 <section id="reading-in-multiple-sequences" class="level3">
 <h3 class="anchored" data-anchor-id="reading-in-multiple-sequences">Reading in multiple sequences</h3>
 <p>It is very common to have files which contain multiple sequences. Biopython provides an interface to read these in, one after another which is the <code>SeqIO.parse</code> function. This provides you with an object which you can loop over with a <code>for</code> loop:</p>
-<div id="ef4e04b4" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[12], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> record <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ls_orchid_short.fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>:
-<span class="ansi-green-fg ansi-bold">      2</span>     <span style="color:rgb(0,135,0)">print</span>(record<span style="color:rgb(98,98,98)">.</span>description)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/FastaIO.py:187</span>, in <span class="ansi-cyan-fg">FastaIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    185</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> alphabet <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    186</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 187</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'ls_orchid_short.fasta'</pre>
-</div>
+<div id="2ee41c71" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gi|2765658|emb|Z78533.1|CIZ78533 C.irapeanum 5.8S rRNA gene and ITS1 and ITS2 DNA
+gi|2765657|emb|Z78532.1|CCZ78532 C.californicum 5.8S rRNA gene and ITS1 and ITS2 DNA
+gi|2765656|emb|Z78531.1|CFZ78531 C.fasciculatum 5.8S rRNA gene and ITS1 and ITS2 DNA
+gi|2765655|emb|Z78530.1|CMZ78530 C.margaritaceum 5.8S rRNA gene and ITS1 and ITS2 DNA
+gi|2765654|emb|Z78529.1|CLZ78529 C.lichiangense 5.8S rRNA gene and ITS1 and ITS2 DNA</code></pre>
 </div>
 </div>
 <p>Each time around the loop, you are given a <code>SeqRecord</code> object which will work in exactly the same way as in the previous section, so getting the <code>.description</code> works fine.</p>
@@ -558,212 +435,93 @@ Answer
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="c977652c" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">len</span>(record.seq), <span class="st">" -"</span>, record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[13], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> record <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ls_orchid_short.fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>:
-<span class="ansi-green-fg ansi-bold">      2</span>     <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(0,135,0)">len</span>(record<span style="color:rgb(98,98,98)">.</span>seq), <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)"> -</span><span style="color:rgb(175,0,0)">"</span>, record<span style="color:rgb(98,98,98)">.</span>description)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/FastaIO.py:187</span>, in <span class="ansi-cyan-fg">FastaIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    185</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> alphabet <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    186</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 187</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'ls_orchid_short.fasta'</pre>
-</div>
+<div id="e90a6b75" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">len</span>(record.seq), <span class="st">" -"</span>, record.description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>740  - gi|2765658|emb|Z78533.1|CIZ78533 C.irapeanum 5.8S rRNA gene and ITS1 and ITS2 DNA
+753  - gi|2765657|emb|Z78532.1|CCZ78532 C.californicum 5.8S rRNA gene and ITS1 and ITS2 DNA
+748  - gi|2765656|emb|Z78531.1|CFZ78531 C.fasciculatum 5.8S rRNA gene and ITS1 and ITS2 DNA
+744  - gi|2765655|emb|Z78530.1|CMZ78530 C.margaritaceum 5.8S rRNA gene and ITS1 and ITS2 DNA
+733  - gi|2765654|emb|Z78529.1|CLZ78529 C.lichiangense 5.8S rRNA gene and ITS1 and ITS2 DNA</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 <p>The type of the object returned by <code>SeqIO.parse</code> is known as a <em>generator</em>. One of the features of a generator in Python is that you can only loop over them once before they are <em>exhausted</em>. For example you can loop over them once without issue:</p>
-<div id="9eb87e16" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[14], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> records <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ls_orchid_short.fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">      2</span> <span style="color:rgb(0,135,0)">print</span>([r<span style="color:rgb(98,98,98)">.</span>id <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> records])
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/FastaIO.py:187</span>, in <span class="ansi-cyan-fg">FastaIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    185</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> alphabet <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    186</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 187</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'ls_orchid_short.fasta'</pre>
-</div>
+<div id="04bd05b1" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['gi|2765658|emb|Z78533.1|CIZ78533', 'gi|2765657|emb|Z78532.1|CCZ78532', 'gi|2765656|emb|Z78531.1|CFZ78531', 'gi|2765655|emb|Z78530.1|CMZ78530', 'gi|2765654|emb|Z78529.1|CLZ78529']</code></pre>
 </div>
 </div>
 <p>But if you try to use the same object again, you will see that you get nothing back:</p>
-<div id="3ac2b46d" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[15], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="color:rgb(0,135,0)">print</span>([r<span style="color:rgb(98,98,98)">.</span>id <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">records</span>])
-
-<span class="ansi-red-fg">NameError</span>: name 'records' is not defined</pre>
-</div>
+<div id="55e7074a" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[]</code></pre>
 </div>
 </div>
 <p>The reason for this is that it allows you to access, one at a time, a very long list of sequences, potentially more than can fit in memory at once since it only loads them one at a time.</p>
 <p>If you know you have a short set of sequences (as we have in this tutorial) then you can load them all into a Python list and access them however you wish:</p>
-<div id="432a1b17" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="bu">list</span>(SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[16], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> records <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">list</span>(<span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ls_orchid_short.fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> <span style="color:rgb(0,135,0)">print</span>([r<span style="color:rgb(98,98,98)">.</span>id <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> records])
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/FastaIO.py:187</span>, in <span class="ansi-cyan-fg">FastaIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    185</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> alphabet <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    186</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg">--&gt; 187</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Fasta</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'ls_orchid_short.fasta'</pre>
+<div id="3e48207b" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>records <span class="op">=</span> <span class="bu">list</span>(SeqIO.parse(<span class="st">"ls_orchid_short.fasta"</span>, <span class="st">"fasta"</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['gi|2765658|emb|Z78533.1|CIZ78533', 'gi|2765657|emb|Z78532.1|CCZ78532', 'gi|2765656|emb|Z78531.1|CFZ78531', 'gi|2765655|emb|Z78530.1|CMZ78530', 'gi|2765654|emb|Z78529.1|CLZ78529']</code></pre>
 </div>
 </div>
-</div>
-<div id="4cd729b0" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[17], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="color:rgb(0,135,0)">print</span>([r<span style="color:rgb(98,98,98)">.</span>id <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">records</span>])
-
-<span class="ansi-red-fg">NameError</span>: name 'records' is not defined</pre>
-</div>
+<div id="490c71e8" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([r.<span class="bu">id</span> <span class="cf">for</span> r <span class="kw">in</span> records])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['gi|2765658|emb|Z78533.1|CIZ78533', 'gi|2765657|emb|Z78532.1|CCZ78532', 'gi|2765656|emb|Z78531.1|CFZ78531', 'gi|2765655|emb|Z78530.1|CMZ78530', 'gi|2765654|emb|Z78529.1|CLZ78529']</code></pre>
 </div>
 </div>
 </section>
 <section id="genbank-files" class="level3">
 <h3 class="anchored" data-anchor-id="genbank-files">Genbank files</h3>
 <p>As well as FASTA files, Biopython can read GenBank files. All you need to do is specify the filetype when calling the <code>SeqIO.parse</code> function. If you pass <code>"genbank"</code> (or <code>"gb"</code>) as the second argument then it will read it as a GenBankfile:</p>
-<div id="88b819ce" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>record_iterator <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[18], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> record_iterator <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">SeqIO</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ls_orchid.gbk</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">genbank</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/__init__.py:625</span>, in <span class="ansi-cyan-fg">parse</span><span class="ansi-blue-fg">(handle, format, alphabet)</span>
-<span class="ansi-green-fg ansi-bold">    623</span> iterator_generator <span style="color:rgb(98,98,98)">=</span> _FormatToIterator<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(0,135,0)">format</span>)
-<span class="ansi-green-fg ansi-bold">    624</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> iterator_generator:
-<span class="ansi-green-fg">--&gt; 625</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">iterator_generator</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    626</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>_FormatToIterator:
-<span class="ansi-green-fg ansi-bold">    627</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Use Bio.AlignIO to read in the alignments</span>
-<span class="ansi-green-fg ansi-bold">    628</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (r <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> AlignIO<span style="color:rgb(98,98,98)">.</span>parse(handle, <span style="color:rgb(0,135,0)">format</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> r <span style="font-weight:bold;color:rgb(175,0,255)">in</span> alignment)
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/InsdcIO.py:102</span>, in <span class="ansi-cyan-fg">GenBankIterator.__init__</span><span class="ansi-blue-fg">(self, source)</span>
-<span class="ansi-green-fg ansi-bold">     65</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">__init__</span>(<span style="color:rgb(0,135,0)">self</span>, source):
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""Break up a Genbank file into SeqRecord objects.</span>
-<span class="ansi-green-fg ansi-bold">     67</span> 
-<span class="ansi-green-fg ansi-bold">     68</span> <span style="font-style:italic;color:rgb(175,0,0)">    Argument source is a file-like object opened in text mode or a path to a file.</span>
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">    100</span> 
-<span class="ansi-green-fg ansi-bold">    101</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
-<span class="ansi-green-fg">--&gt; 102</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span style="color:rgb(0,0,255)" class="ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">t</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">GenBank</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/Bio/SeqIO/Interfaces.py:64</span>, in <span class="ansi-cyan-fg">SequenceIterator.__init__</span><span class="ansi-blue-fg">(self, source, alphabet, mode, fmt)</span>
-<span class="ansi-green-fg ansi-bold">     62</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">The alphabet argument is no longer supported</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">     63</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(source, _PathLikeTypes):
-<span class="ansi-green-fg">---&gt; 64</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>stream <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">source</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">     65</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>should_close_stream <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg ansi-bold">     66</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'ls_orchid.gbk'</pre>
-</div>
-</div>
+<div id="d7e0de71" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>record_iterator <span class="op">=</span> SeqIO.parse(<span class="st">"ls_orchid.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you are loading a file with multiple sequences in, you can grab just the first one with Python’s <a href="https://docs.python.org/3/library/functions.html#next"><code>next</code></a> function. This gives you whatever would be available the first time around the loop:</p>
-<div id="fa6c5920" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>first_record <span class="op">=</span> <span class="bu">next</span>(record_iterator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[19], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> first_record <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">next</span>(<span class="ansi-yellow-bg">record_iterator</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'record_iterator' is not defined</pre>
-</div>
-</div>
+<div id="62383976" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>first_record <span class="op">=</span> <span class="bu">next</span>(record_iterator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>GenBank files usually contain a lot more information than a FASTA so more of the fields of the <code>SeqRecord</code> will be filled in. This means that we can, for example, see the annotations that the sequecne has:</p>
-<div id="ee375143" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[20], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>annotations
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
-</div>
+<div id="537bf683" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>{'molecule_type': 'DNA',
+ 'topology': 'linear',
+ 'data_file_division': 'PLN',
+ 'date': '30-NOV-2006',
+ 'accessions': ['Z78533'],
+ 'sequence_version': 1,
+ 'gi': '2765658',
+ 'keywords': ['5.8S ribosomal RNA',
+  '5.8S rRNA gene',
+  'internal transcribed spacer',
+  'ITS1',
+  'ITS2'],
+ 'source': 'Cypripedium irapeanum',
+ 'organism': 'Cypripedium irapeanum',
+ 'taxonomy': ['Eukaryota',
+  'Viridiplantae',
+  'Streptophyta',
+  'Embryophyta',
+  'Tracheophyta',
+  'Spermatophyta',
+  'Magnoliophyta',
+  'Liliopsida',
+  'Asparagales',
+  'Orchidaceae',
+  'Cypripedioideae',
+  'Cypripedium'],
+ 'references': [Reference(title='Phylogenetics of the slipper orchids (Cypripedioideae: Orchidaceae): nuclear rDNA ITS sequences', ...),
+  Reference(title='Direct Submission', ...)]}</code></pre>
 </div>
 </div>
 <div id="exampleN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -791,108 +549,83 @@ Answer
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="c26adfc2" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>first_record.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[21], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>seq
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+<div id="c5ad8d48" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>first_record.seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>Seq('CGTAACAAGGTTTCCGTAGGTGAACCTGCGGAAGGATCATTGATGAGACCGTGG...CGC')</code></pre>
 </div>
 </div>
-</div>
-<div id="b508e3d3" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>first_record.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[22], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>id
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+<div id="97347c9f" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>first_record.<span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>'Z78533.1'</code></pre>
 </div>
 </div>
-</div>
-<div id="fd5420d9" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>first_record.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[23], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>name
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+<div id="07300383" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>first_record.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>'Z78533'</code></pre>
 </div>
 </div>
-</div>
-<div id="6bd22a95" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>first_record.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[24], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>description
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+<div id="8dd08c18" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>first_record.description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>'C.irapeanum 5.8S rRNA gene and ITS1 and ITS2 DNA'</code></pre>
 </div>
 </div>
-</div>
-<div id="4096a339" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>first_record.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[25], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>letter_annotations
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+<div id="7cc9cd0c" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>first_record.letter_annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>{}</code></pre>
 </div>
 </div>
+<div id="c76daf3c" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>{'molecule_type': 'DNA',
+ 'topology': 'linear',
+ 'data_file_division': 'PLN',
+ 'date': '30-NOV-2006',
+ 'accessions': ['Z78533'],
+ 'sequence_version': 1,
+ 'gi': '2765658',
+ 'keywords': ['5.8S ribosomal RNA',
+  '5.8S rRNA gene',
+  'internal transcribed spacer',
+  'ITS1',
+  'ITS2'],
+ 'source': 'Cypripedium irapeanum',
+ 'organism': 'Cypripedium irapeanum',
+ 'taxonomy': ['Eukaryota',
+  'Viridiplantae',
+  'Streptophyta',
+  'Embryophyta',
+  'Tracheophyta',
+  'Spermatophyta',
+  'Magnoliophyta',
+  'Liliopsida',
+  'Asparagales',
+  'Orchidaceae',
+  'Cypripedioideae',
+  'Cypripedium'],
+ 'references': [Reference(title='Phylogenetics of the slipper orchids (Cypripedioideae: Orchidaceae): nuclear rDNA ITS sequences', ...),
+  Reference(title='Direct Submission', ...)]}</code></pre>
 </div>
-<div id="bb36cb42" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>first_record.annotations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[26], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>annotations
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
+</div>
+<div id="9a1fd937" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>first_record.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>[SeqFeature(SimpleLocation(ExactPosition(0), ExactPosition(740), strand=1), type='source', qualifiers=...),
+ SeqFeature(SimpleLocation(ExactPosition(0), ExactPosition(380), strand=1), type='misc_feature', qualifiers=...),
+ SeqFeature(SimpleLocation(ExactPosition(380), ExactPosition(550), strand=1), type='gene', qualifiers=...),
+ SeqFeature(SimpleLocation(ExactPosition(380), ExactPosition(550), strand=1), type='rRNA', qualifiers=...),
+ SeqFeature(SimpleLocation(ExactPosition(550), ExactPosition(740), strand=1), type='misc_feature', qualifiers=...)]</code></pre>
 </div>
 </div>
-</div>
-<div id="0baabb84" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>first_record.features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[27], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>features
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
-</div>
-</div>
-</div>
-<div id="455c6c5a" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>first_record.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[28], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">first_record</span><span style="color:rgb(98,98,98)">.</span>dbxrefs
-
-<span class="ansi-red-fg">NameError</span>: name 'first_record' is not defined</pre>
-</div>
+<div id="5673923c" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>first_record.dbxrefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>[]</code></pre>
 </div>
 </div>
 </div>
@@ -900,35 +633,35 @@ Cell <span class="ansi-green-fg">In[28], line 1</span>
 </div>
 <p>We’ve talked about using <code>Bio.SeqIO.parse</code> for sequence input (reading files), and now we’ll look at <code>Bio.SeqIO.write</code> which is for sequence output (writing files). This is a function taking three arguments: some <code>SeqRecord</code> objects, a handle or filename to write to, and a sequence format.</p>
 <p>Here is an example, where we start by creating a few <code>SeqRecord</code> objects the hard way (by hand, rather than by loading them from a file):</p>
-<div id="03436771" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>rec1 <span class="op">=</span> SeqRecord(</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    Seq(</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD"</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK"</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM"</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"SSAC"</span>,</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span><span class="op">=</span><span class="st">"gi|14150838|gb|AAK54648.1|AF376133_1"</span>,</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"chalcone synthase [Cucumis sativus]"</span>,</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>rec2 <span class="op">=</span> SeqRecord(</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    Seq(</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"YPDYYFRITNREHKAELKEKFQRMCDKSMIKKRYMYLTEEILKENPSMCEYMAPSLDARQ"</span></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"DMVVVEIPKLGKEAAVKAIKEWGQ"</span>,</span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span><span class="op">=</span><span class="st">"gi|13919613|gb|AAK33142.1|"</span>,</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"chalcone synthase [Fragaria vesca subsp. bracteata]"</span>,</span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>my_records <span class="op">=</span> [rec1, rec2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff2e97c4" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>rec1 <span class="op">=</span> SeqRecord(</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    Seq(</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD"</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK"</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM"</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"SSAC"</span>,</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span><span class="op">=</span><span class="st">"gi|14150838|gb|AAK54648.1|AF376133_1"</span>,</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"chalcone synthase [Cucumis sativus]"</span>,</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>rec2 <span class="op">=</span> SeqRecord(</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    Seq(</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"YPDYYFRITNREHKAELKEKFQRMCDKSMIKKRYMYLTEEILKENPSMCEYMAPSLDARQ"</span></span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"DMVVVEIPKLGKEAAVKAIKEWGQ"</span>,</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span><span class="op">=</span><span class="st">"gi|13919613|gb|AAK33142.1|"</span>,</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"chalcone synthase [Fragaria vesca subsp. bracteata]"</span>,</span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>my_records <span class="op">=</span> [rec1, rec2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have a list of <code>SeqRecord</code> objects, we’ll write them to a FASTA format file:</p>
-<div id="d16c76d6" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>SeqIO.write(my_records, <span class="st">"my_example.faa"</span>, <span class="st">"fasta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2a064875" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>SeqIO.write(my_records, <span class="st">"my_example.faa"</span>, <span class="st">"fasta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>2</code></pre>
 </div>
