@@ -287,3 +287,39 @@ The `2` that gets returned tells you how many records were written.
 Create one `SeqRecord` by hand and write it to a `.gbk` file. Then read that file in and check that the details match.
 :::
 
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+
+To save a *GenBank* file we will need to define an annotation for 'molecule_type'
+```{python}
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+
+rec1 = SeqRecord(
+    Seq(
+        "MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD"
+        "GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK"
+        "NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM"
+        "SSAC",
+    ),
+    id="gi|14150838|gb|AAK54648.1|AF376133_1",
+    description="chalcone synthase [Cucumis sativus]",
+    annotations={"molecule_type":"protein"}
+)
+
+rec2 = SeqRecord(
+    Seq(
+        "YPDYYFRITNREHKAELKEKFQRMCDKSMIKKRYMYLTEEILKENPSMCEYMAPSLDARQ"
+        "DMVVVEIPKLGKEAAVKAIKEWGQ",
+    ),
+    id="gi|13919613|gb|AAK33142.1|",
+    description="chalcone synthase [Fragaria vesca subsp. bracteata]",
+    annotations={"molecule_type":"protein"}
+)
+
+my_records = [rec1, rec2]
+```
+```{python}
+SeqIO.write(my_records, "my_example.gbk", "genbank")
+```
+
+:::

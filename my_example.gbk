@@ -1,0 +1,28 @@
+LOCUS       gi|14150838|gb|AAK54648.1|AF376133_1 184 aa                     UNK 01-JAN-1980
+DEFINITION  chalcone synthase [Cucumis sativus].
+ACCESSION   gi|14150838|gb|AAK54648.1|AF376133_1
+VERSION     gi|14150838|gb|AAK54648.1|AF376133_1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 mmyqqgcfag gtvlrlakdl aennrgarvl vvcseitavt frgpsethld smvgqalfgd
+       61 gagavivgsd pdlsverply elvwtgatll pdsegaidgh lrevgltfhl lkdvpglisk
+      121 niekslkeaf tplgisdwns tfwiahpggp aildqveakl glkeekmrat revlseygnm
+      181 ssac
+//
+LOCUS       gi|13919613|gb|AAK33142.1| 84 aa                     UNK 01-JAN-1980
+DEFINITION  chalcone synthase [Fragaria vesca subsp. bracteata].
+ACCESSION   gi|13919613|gb|AAK33142.1|
+VERSION     gi|13919613|gb|AAK33142.1|
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 ypdyyfritn rehkaelkek fqrmcdksmi kkrymyltee ilkenpsmce ymapsldarq
+       61 dmvvveipkl gkeaavkaik ewgq
+//
