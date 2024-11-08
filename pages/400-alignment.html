@@ -274,37 +274,33 @@ TTAGATACAGGAGCAGATGATACAGTATTAGAAGAAAT</code></pre>
 <section id="single-alignments" class="level4">
 <h4 class="anchored" data-anchor-id="single-alignments">Single alignments</h4>
 <p>Let’s start with a single alignments file which contains the seed alignment for the Phage_Coat_Gp8 (PF05371) PFAM entry. The file contains a lot of annotation information but let’s just go ahead and load it in to see how it looks:</p>
-<div id="fd94373f" class="cell" data-execution_count="1">
+<div id="ee7e1eea" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aln_seed <span class="op">=</span> AlignIO.read(<span class="st">"data/PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(aln_seed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> AlignIO
-<span class="ansi-green-fg ansi-bold">      2</span> aln_seed <span style="color:rgb(98,98,98)">=</span> AlignIO<span style="color:rgb(98,98,98)">.</span>read(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">data/PF05371_seed.sth</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">stockholm</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      3</span> <span style="color:rgb(0,135,0)">print</span>(aln_seed)
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alignment with 7 rows and 52 columns
+AEPNAATNYATEAMDSLKTQAIDLISQTWPVVTTVVVAGLVIRL...SKA COATB_BPIKE/30-81
+AEPNAATNYATEAMDSLKTQAIDLISQTWPVVTTVVVAGLVIKL...SRA Q9T0Q8_BPIKE/1-52
+DGTSTATSYATEAMNSLKTQATDLIDQTWPVVTSVAVAGLAIRL...SKA COATB_BPI22/32-83
+AEGDDP---AKAAFNSLQASATEYIGYAWAMVVVIVGATIGIKL...SKA COATB_BPM13/24-72
+AEGDDP---AKAAFDSLQASATEYIGYAWAMVVVIVGATIGIKL...SKA COATB_BPZJ2/1-49
+AEGDDP---AKAAFDSLQASATEYIGYAWAMVVVIVGATIGIKL...SKA Q9T0Q9_BPFD/1-49
+FAADDATSQAKAAFDSLTAQATEMSGYAWALVVLVVGATVGIKL...SRA COATB_BPIF1/22-73</code></pre>
 </div>
 </div>
 <p>Note in the above output the sequences have been elided in the middle (<code>...</code>). We could instead write our own code to format this as we please by iterating over the rows as <code>SeqRecord</code> objects and printing the first 50 values of each sequence:</p>
-<div id="3e238b25" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> aln_seed:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>record<span class="sc">.</span>seq[:<span class="dv">50</span>]<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>record<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[2], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> record <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span class="ansi-yellow-bg">aln_seed</span>:
-<span class="ansi-green-fg ansi-bold">      2</span>     <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>record<span style="color:rgb(98,98,98)">.</span>seq[:<span style="color:rgb(98,98,98)">50</span>]<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> - </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>record<span style="color:rgb(98,98,98)">.</span>id<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'aln_seed' is not defined</pre>
-</div>
+<div id="b253fa09" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> record <span class="kw">in</span> aln_seed:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>record<span class="sc">.</span>seq[:<span class="dv">50</span>]<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>record<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>AEPNAATNYATEAMDSLKTQAIDLISQTWPVVTTVVVAGLVIRLFKKFSS - COATB_BPIKE/30-81
+AEPNAATNYATEAMDSLKTQAIDLISQTWPVVTTVVVAGLVIKLFKKFVS - Q9T0Q8_BPIKE/1-52
+DGTSTATSYATEAMNSLKTQATDLIDQTWPVVTSVAVAGLAIRLFKKFSS - COATB_BPI22/32-83
+AEGDDP---AKAAFNSLQASATEYIGYAWAMVVVIVGATIGIKLFKKFTS - COATB_BPM13/24-72
+AEGDDP---AKAAFDSLQASATEYIGYAWAMVVVIVGATIGIKLFKKFAS - COATB_BPZJ2/1-49
+AEGDDP---AKAAFDSLQASATEYIGYAWAMVVVIVGATIGIKLFKKFTS - Q9T0Q9_BPFD/1-49
+FAADDATSQAKAAFDSLTAQATEMSGYAWALVVLVVGATVGIKLFKKFVS - COATB_BPIF1/22-73</code></pre>
 </div>
 </div>
 <p>With any supported file format, we can load an alignment in exactly the same way just by changing the format string. For example, use <code>"phylip"</code> for PHYLIP files, <code>"nexus"</code> for NEXUS files or <code>"emboss"</code> for the alignments output by the EMBOSS tools.</p>
@@ -313,40 +309,47 @@ Cell <span class="ansi-green-fg">In[2], line 1</span>
 <h4 class="anchored" data-anchor-id="multiple-alignments">Multiple Alignments</h4>
 <p>In general alignment files can contain multiples alignments, and to read these files we must use the <code>AlignIO.parse</code> function.</p>
 <p>We have previously downloaded a file called <code>dummy_aln.phy</code> which contains some dummy alignment information in PHYLIP format. If we wanted to read this in using <code>AlignIO</code> we could use:</p>
-<div id="17c711cb" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aln_dummy <span class="op">=</span> AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alignment <span class="kw">in</span> aln_dummy:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(alignment)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[3], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> aln_dummy <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">AlignIO</span><span style="color:rgb(98,98,98)">.</span>parse(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">data/dummy_aln.phy</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">phylip</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> alignment <span style="font-weight:bold;color:rgb(175,0,255)">in</span> aln_dummy:
-<span class="ansi-green-fg ansi-bold">      3</span>     <span style="color:rgb(0,135,0)">print</span>(alignment)
-
-<span class="ansi-red-fg">NameError</span>: name 'AlignIO' is not defined</pre>
-</div>
+<div id="53b98538" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aln_dummy <span class="op">=</span> AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alignment <span class="kw">in</span> aln_dummy:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(alignment)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"---"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alignment with 5 rows and 6 columns
+AAACCA Alpha
+AAACCC Beta
+ACCCCA Gamma
+CCCAAC Delta
+CCCAAA Epsilon
+---
+Alignment with 5 rows and 6 columns
+AAACAA Alpha
+AAACCC Beta
+ACCCAA Gamma
+CCCACC Delta
+CCCAAA Epsilon
+---
+Alignment with 5 rows and 6 columns
+AAAAAC Alpha
+AAACCC Beta
+AACAAC Gamma
+CCCCCA Delta
+CCCAAC Epsilon
+---</code></pre>
 </div>
 </div>
 <p>The <code>.parse()</code> function returns an iterator. If we want to keep all the alignments in memory at once, then we need to turn the iterator into a list, just as we did with <code>SeqIO.parse</code>:</p>
-<div id="058022fe" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>alignments <span class="op">=</span> <span class="bu">list</span>(AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>second_aln <span class="op">=</span> alignments[<span class="dv">1</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second_aln)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[4], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> alignments <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">list</span>(<span class="ansi-yellow-bg">AlignIO</span><span style="color:rgb(98,98,98)">.</span>parse(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">data/dummy_aln.phy</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">phylip</span><span style="color:rgb(175,0,0)">"</span>))
-<span class="ansi-green-fg ansi-bold">      2</span> second_aln <span style="color:rgb(98,98,98)">=</span> alignments[<span style="color:rgb(98,98,98)">1</span>]
-<span class="ansi-green-fg ansi-bold">      3</span> <span style="color:rgb(0,135,0)">print</span>(second_aln)
-
-<span class="ansi-red-fg">NameError</span>: name 'AlignIO' is not defined</pre>
-</div>
+<div id="35101e7f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alignments <span class="op">=</span> <span class="bu">list</span>(AlignIO.parse(<span class="st">"data/dummy_aln.phy"</span>, <span class="st">"phylip"</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>second_aln <span class="op">=</span> alignments[<span class="dv">1</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(second_aln)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alignment with 5 rows and 6 columns
+AAACAA Alpha
+AAACCC Beta
+ACCCAA Gamma
+CCCACC Delta
+CCCAAA Epsilon</code></pre>
 </div>
 </div>
 </section>
@@ -356,46 +359,32 @@ Cell <span class="ansi-green-fg">In[4], line 1</span>
 <p>Now we’ll look at <code>AlignIO.write()</code> which is for alignments output (writing files).</p>
 <p>This function takes 3 arguments: - Some <code>MultipleSeqAlignment</code> objects - A string specifying a handle or a filename to write to - A lower case string specifying the sequence format.</p>
 <p>We start by creating a <code>MultipleSeqAlignment</code> object the hard way (by hand). Note we create some <code>SeqRecord</code> objects to construct the alignment from.</p>
-<div id="0d741b21" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Align <span class="im">import</span> MultipleSeqAlignment</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>align1 <span class="op">=</span> MultipleSeqAlignment([</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACTGCTAGCTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"toto"</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACT-CTAGCTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"titi"</span>),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACTGCTAGDTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"tata"</span>),</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(align1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[5], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">Align</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> MultipleSeqAlignment
-<span class="ansi-green-fg ansi-bold">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">Seq</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> Seq
-<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">SeqRecord</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> SeqRecord
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
+<div id="37664b45" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Align <span class="im">import</span> MultipleSeqAlignment</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.SeqRecord <span class="im">import</span> SeqRecord</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>align1 <span class="op">=</span> MultipleSeqAlignment([</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACTGCTAGCTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"toto"</span>),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACT-CTAGCTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"titi"</span>),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    SeqRecord(Seq(<span class="st">"ACTGCTAGDTAG"</span>), <span class="bu">id</span><span class="op">=</span><span class="st">"tata"</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(align1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alignment with 3 rows and 12 columns
+ACTGCTAGCTAG toto
+ACT-CTAGCTAG titi
+ACTGCTAGDTAG tata</code></pre>
 </div>
 </div>
 <p>Now let’s try to output, in PHYLIP format, these alignments in a file with the Phage_Coat_Gp8 alignments.</p>
-<div id="cc600a25" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_alignments <span class="op">=</span> [align1, aln_seed]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>AlignIO.write(my_alignments, <span class="st">"mixed.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[6], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> my_alignments <span style="color:rgb(98,98,98)">=</span> [<span class="ansi-yellow-bg">align1</span>, aln_seed]
-<span class="ansi-green-fg ansi-bold">      2</span> AlignIO<span style="color:rgb(98,98,98)">.</span>write(my_alignments, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">mixed.phy</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">phylip</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'align1' is not defined</pre>
-</div>
+<div id="1b6c4251" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_alignments <span class="op">=</span> [align1, aln_seed]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>AlignIO.write(my_alignments, <span class="st">"mixed.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>2</code></pre>
 </div>
 </div>
 <div id="exampleN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -423,21 +412,12 @@ Answer
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="f2635420" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>aln_pf05371 <span class="op">=</span> <span class="bu">list</span>( AlignIO.parse(<span class="st">"data/PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>) )</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>AlignIO.write(aln_pf05371, <span class="st">"pf05371.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[7], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> AlignIO
-<span class="ansi-green-fg ansi-bold">      2</span> aln_pf05371 <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">list</span>( AlignIO<span style="color:rgb(98,98,98)">.</span>parse(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">data/PF05371_seed.sth</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">stockholm</span><span style="color:rgb(175,0,0)">"</span>) )
-<span class="ansi-green-fg ansi-bold">      3</span> AlignIO<span style="color:rgb(98,98,98)">.</span>write(aln_pf05371, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">pf05371.phy</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">phylip</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
+<div id="0e9bdc20" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> AlignIO</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>aln_pf05371 <span class="op">=</span> <span class="bu">list</span>( AlignIO.parse(<span class="st">"data/PF05371_seed.sth"</span>, <span class="st">"stockholm"</span>) )</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>AlignIO.write(aln_pf05371, <span class="st">"pf05371.phy"</span>, <span class="st">"phylip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>1</code></pre>
 </div>
 </div>
 </div>
@@ -545,7 +525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/introduction-to-biopython\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

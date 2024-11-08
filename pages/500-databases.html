@@ -234,20 +234,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>It is recommended that for any series of more than <em>100</em> requests, do this at weekends or outside USA peak times.</p></li>
 <li><p>Use the <code>email</code> parameter so the NCBI can contact you if there is a problem. You can set a global email address:</p>
-<div id="a7168226" class="cell" data-execution_count="1">
+<div id="c627044d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> Entrez</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Entrez.email <span class="op">=</span> <span class="st">"ab01234@bristol.ac.uk"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> Entrez
-<span class="ansi-green-fg ansi-bold">      2</span> Entrez<span style="color:rgb(98,98,98)">.</span>email <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">ab01234@bristol.ac.uk</span><span style="color:rgb(175,0,0)">"</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
-</div>
 </div></li>
 </ul>
 <section id="einfo---obtaining-information-about-the-entrez-databases" class="level3">
@@ -259,39 +248,54 @@ Cell <span class="ansi-green-fg">In[1], line 1</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.einfo()</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> Entrez.read(handle)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result[<span class="st">"DbList"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="3fdc7962" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[2], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>einfo()
-<span class="ansi-green-fg ansi-bold">      2</span> result <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>read(handle)
-<span class="ansi-green-fg ansi-bold">      3</span> <span style="color:rgb(0,135,0)">print</span>(result[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">DbList</span><span style="color:rgb(175,0,0)">"</span>])
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="44d1a409" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>['pubmed', 'protein', 'nuccore', 'ipg', 'nucleotide', 'structure', 'genome', 'annotinfo', 'assembly', 'bioproject', 'biosample', 'blastdbinfo', 'books', 'cdd', 'clinvar', 'gap', 'gapplus', 'grasp', 'dbvar', 'gene', 'gds', 'geoprofiles', 'medgen', 'mesh', 'nlmcatalog', 'omim', 'orgtrack', 'pmc', 'popset', 'proteinclusters', 'pcassay', 'protfam', 'pccompound', 'pcsubstance', 'seqannot', 'snp', 'sra', 'taxonomy', 'biocollections', 'gtr']</code></pre>
 </div>
 </div>
 <p>We can see, for example, the “pubmed”, “protein” and “nuccore” databases.</p>
 <p>You can delve into any one of the databases individually by passing the name of it to the <code>einfo</code> function. For example, you can ask it for the valid list of query fields which we will be able to use shortly:</p>
-<div id="9c2d52b8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.einfo(db<span class="op">=</span><span class="st">"nucleotide"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> Entrez.read(handle)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> result[<span class="st">"DbInfo"</span>][<span class="st">"FieldList"</span>]:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f[<span class="st">"Name"</span>], f[<span class="st">"Description"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[3], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>einfo(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> result <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>read(handle)
-<span class="ansi-green-fg ansi-bold">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> f <span style="font-weight:bold;color:rgb(175,0,255)">in</span> result[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">DbInfo</span><span style="color:rgb(175,0,0)">"</span>][<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">FieldList</span><span style="color:rgb(175,0,0)">"</span>]:
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="b85a48c8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.einfo(db<span class="op">=</span><span class="st">"nucleotide"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> Entrez.read(handle)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> result[<span class="st">"DbInfo"</span>][<span class="st">"FieldList"</span>]:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f[<span class="st">"Name"</span>], f[<span class="st">"Description"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ALL All terms from all searchable fields
+UID Unique number assigned to each sequence
+FILT Limits the records
+WORD Free text associated with record
+TITL Words in definition line
+KYWD Nonstandardized terms provided by submitter
+AUTH Author(s) of publication
+JOUR Journal abbreviation of publication
+VOL Volume number of publication
+ISS Issue number of publication
+PAGE Page number(s) of publication
+ORGN Scientific and common names of organism, and all higher levels of taxonomy
+ACCN Accession number of sequence
+PACC Does not include retired secondary accessions
+GENE Name of gene associated with sequence
+PROT Name of protein associated with sequence
+ECNO EC number for enzyme or CAS registry number
+PDAT Date sequence added to GenBank
+MDAT Date of last update
+SUBS CAS chemical name or MEDLINE Substance Name
+PROP Classification by source qualifiers and molecule type
+SQID String identifier for sequence
+GPRJ BioProject
+SLEN Length of sequence
+FKEY Feature annotated on sequence
+PORG Scientific and common names of primary organism, and all higher levels of taxonomy
+COMP Component accessions for an assembly
+ASSM Assembly
+DIV Division
+STRN Strain
+ISOL Isolate
+CULT Cultivar
+BRD Breed
+BIOS BioSample</code></pre>
 </div>
 </div>
 <div id="exampleN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -319,26 +323,66 @@ Answer
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="f8a3bbad" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> Entrez</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Entrez.email <span class="op">=</span> <span class="st">"ab01234@bristol.ac.uk"</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.einfo(db<span class="op">=</span><span class="st">"pubmed"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> Entrez.read(handle)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> result[<span class="st">"DbInfo"</span>][<span class="st">"FieldList"</span>]:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f[<span class="st">"Name"</span>], f[<span class="st">"Description"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[4], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> Entrez
-<span class="ansi-green-fg ansi-bold">      2</span> Entrez<span style="color:rgb(98,98,98)">.</span>email <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">ab01234@bristol.ac.uk</span><span style="color:rgb(175,0,0)">"</span> 
-<span class="ansi-green-fg ansi-bold">      4</span> handle <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>einfo(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">pubmed</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
+<div id="945d1280" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> Entrez</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Entrez.email <span class="op">=</span> <span class="st">"ab01234@bristol.ac.uk"</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.einfo(db<span class="op">=</span><span class="st">"pubmed"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> Entrez.read(handle)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> result[<span class="st">"DbInfo"</span>][<span class="st">"FieldList"</span>]:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f[<span class="st">"Name"</span>], f[<span class="st">"Description"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ALL All terms from all searchable fields
+UID Unique number assigned to publication
+FILT Limits the records
+TITL Words in title of publication
+MESH Medical Subject Headings assigned to publication
+MAJR MeSH terms of major importance to publication
+JOUR Journal abbreviation of publication
+AFFL Author's institutional affiliation and address
+ECNO EC number for enzyme or CAS registry number
+SUBS CAS chemical name or MEDLINE Substance Name
+PDAT Date of publication
+EDAT Date publication first accessible through Entrez
+VOL Volume number of publication
+PAGE Page number(s) of publication
+PTYP Type of publication (e.g., review)
+LANG Language of publication
+ISS Issue number of publication
+SUBH Additional specificity for MeSH term
+SI Cross-reference from publication to other databases
+MHDA Date publication was indexed with MeSH terms
+TIAB Free text associated with Abstract/Title
+OTRM Other terms associated with publication
+COLN Corporate Author of publication
+CNTY Country of publication
+PAPX MeSH pharmacological action pre-explosions
+GRNT NIH Grant Numbers
+MDAT Date of last modification
+CDAT Date of completion
+PID Publisher ID
+FAUT First Author of publication
+FULL Full Author Name(s) of publication
+FINV Full name of investigator
+TT Words in transliterated title of publication
+LAUT Last Author of publication
+PPDT Date of print publication
+EPDT Date of Electronic publication
+LID ELocation ID
+CRDT Date publication first accessible through Entrez
+BOOK ID of the book that contains the document
+ED Section's Editor
+ISBN ISBN
+PUBN Publisher's name
+AUCL Author Cluster ID
+EID Extended PMID
+DSO Additional text from the summary
+AUID Author Identifier
+PS Personal Name as Subject
+COIS Conflict of Interest Statements
+WORD Free text associated with publication
+P1DAT Date publication first accessible through Solr</code></pre>
 </div>
 </div>
 </div>
@@ -348,21 +392,12 @@ Cell <span class="ansi-green-fg">In[4], line 1</span>
 <section id="esearch---searching-the-entrez-databases" class="level3">
 <h3 class="anchored" data-anchor-id="esearch---searching-the-entrez-databases">ESearch - Searching the Entrez databases</h3>
 <p>You can also use ESearch to search GenBank. Here we’ll do a search for the <em>matK</em> gene in <em>Cypripedioideae</em> orchids. We specify the database we want to search, the search terms (based on the fields we found out about earlier) and pass the <code>idtype</code> argument to specify what we want to have returned as the <code>.id</code> field:</p>
-<div id="fabc82f2" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.esearch(db<span class="op">=</span><span class="st">"nucleotide"</span>, term<span class="op">=</span><span class="st">"Cypripedioideae[Orgn] AND matK[Gene]"</span>, idtype<span class="op">=</span><span class="st">"acc"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> Entrez.read(handle)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>record[<span class="st">"IdList"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[5], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>esearch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, term<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Cypripedioideae[Orgn] AND matK[Gene]</span><span style="color:rgb(175,0,0)">"</span>, idtype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">acc</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> record <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>read(handle)
-<span class="ansi-green-fg ansi-bold">      3</span> record[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">IdList</span><span style="color:rgb(175,0,0)">"</span>]
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="02dad0f7" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.esearch(db<span class="op">=</span><span class="st">"nucleotide"</span>, term<span class="op">=</span><span class="st">"Cypripedioideae[Orgn] AND matK[Gene]"</span>, idtype<span class="op">=</span><span class="st">"acc"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> Entrez.read(handle)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>record[<span class="st">"IdList"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['NC_087860.1', 'PP503063.1', 'PP448181.1', 'PP356909.1', 'OR348669.1', 'OM313455.1', 'OM313454.1', 'NC_084420.1', 'NC_084419.1', 'NC_084418.1', 'OR772093.1', 'OR772092.1', 'OR772091.1', 'OR772090.1', 'OR772089.1', 'OR772088.1', 'OR772087.1', 'OR772086.1', 'OR772085.1', 'OR772084.1']</code></pre>
 </div>
 </div>
 <p>Each of the IDs (<code>NC_087860.1</code>, <code>PP503063.1</code>, …) is a GenBank identifier (Accession number). We’ll see shortly how to actually download these GenBank records.</p>
@@ -391,21 +426,12 @@ Answer
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="833df735" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.esearch(db<span class="op">=</span><span class="st">"nucleotide"</span>, term<span class="op">=</span><span class="st">"homo sapiens[Orgn] AND tp53[Gene]"</span>, idtype<span class="op">=</span><span class="st">"acc"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> Entrez.read(handle)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>record[<span class="st">"IdList"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[6], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>esearch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, term<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">homo sapiens[Orgn] AND tp53[Gene]</span><span style="color:rgb(175,0,0)">"</span>, idtype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">acc</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> record <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>read(handle)
-<span class="ansi-green-fg ansi-bold">      3</span> record[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">IdList</span><span style="color:rgb(175,0,0)">"</span>]
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="76ebb485" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.esearch(db<span class="op">=</span><span class="st">"nucleotide"</span>, term<span class="op">=</span><span class="st">"homo sapiens[Orgn] AND tp53[Gene]"</span>, idtype<span class="op">=</span><span class="st">"acc"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> Entrez.read(handle)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>record[<span class="st">"IdList"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>['NG_017013.2', 'NR_176326.1', 'NM_001407264.1', 'NM_001407263.1', 'NM_001407268.1', 'NM_001407269.1', 'NM_001407271.1', 'NM_001407270.1', 'NM_001407262.1', 'NM_001407267.1', 'NM_001407265.1', 'NM_001407266.1', 'NM_001126117.2', 'NM_001126115.2', 'NM_001126118.2', 'NM_001126112.3', 'NM_001126116.2', 'NM_001126113.3', 'NM_001126114.3', 'NM_001276698.3']</code></pre>
 </div>
 </div>
 <p>Homo sapiens tumor protein p53 (TP53) NCBI Reference Sequence: NG_017013.2 <a href="https://www.ncbi.nlm.nih.gov/nuccore/383209646" class="uri">https://www.ncbi.nlm.nih.gov/nuccore/383209646</a></p>
@@ -419,51 +445,24 @@ Cell <span class="ansi-green-fg">In[6], line 1</span>
 <p>For most of their databases, the NCBI support several different file formats. Requesting a specific file format from Entrez using <code>Bio.Entrez.efetch</code> requires specifying the <code>rettype</code> and/or <code>retmode</code> optional arguments. The different combinations are described for each database type on the pages linked to on <a href="https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch">NCBI efetch webpage</a>.</p>
 <p>One common usage is downloading sequences in the FASTA or GenBank/GenPept plain text formats (which can then be parsed with <code>Bio.SeqIO</code>). From the Cypripedioideae example above, we can download GenBank record <code>NC_050871.1</code> using <code>Bio.Entrez.efetch</code>.</p>
 <p>We specify the database we want to fetch from, the ID returned from the search, the return type of the data (FASTA, GenBank etc.) and that we want the result as plain text:</p>
-<div id="90790d7b" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[7], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>efetch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(0,135,0)">id</span><span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">NC_050871.1</span><span style="color:rgb(175,0,0)">"</span>, rettype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">gb</span><span style="color:rgb(175,0,0)">"</span>, retmode<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">text</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
-</div>
+<div id="e8d36989" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This has given us a handle which we can pass to <code>Bio.SeqIO.read</code> in place of the filename:</p>
-<div id="097eb93e" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>SeqIO.read(handle, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[8], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span> <span style="font-weight:bold;color:rgb(0,0,255)">Bio</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> SeqIO
-<span class="ansi-green-fg ansi-bold">      2</span> SeqIO<span style="color:rgb(98,98,98)">.</span>read(handle, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">genbank</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'Bio'</pre>
-</div>
+<div id="590375f7" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>SeqIO.read(handle, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>SeqRecord(seq=Seq('GTAAAAAATCCCCATATCTTACAAGATATGGGGATTTTTTACCTTCAAAAATTC...TTT'), id='NC_050871.1', name='NC_050871', description='Paphiopedilum hirsutissimum chloroplast, complete genome', dbxrefs=['BioProject:PRJNA927338'])</code></pre>
 </div>
 </div>
 <p>If you want to download the file and save a copy of it on disk, you can write the result to file with:</p>
-<div id="2080ce21" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>SeqIO.write(record, <span class="st">"NC_050871.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[9], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>efetch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(0,135,0)">id</span><span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">NC_050871.1</span><span style="color:rgb(175,0,0)">"</span>, rettype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">gb</span><span style="color:rgb(175,0,0)">"</span>, retmode<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">text</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> record <span style="color:rgb(98,98,98)">=</span> SeqIO<span style="color:rgb(98,98,98)">.</span>read(handle, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">genbank</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      3</span> SeqIO<span style="color:rgb(98,98,98)">.</span>write(record, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">NC_050871.gbk</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">genbank</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="abb53275" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>SeqIO.write(record, <span class="st">"NC_050871.gbk"</span>, <span class="st">"genbank"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>1</code></pre>
 </div>
 </div>
 <div id="exampleN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -491,26 +490,37 @@ Answer
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="13df7fbc" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NG_017013.2"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>SeqIO.write(record, <span class="st">"NG_017013.gbk"</span>, <span class="st">"genbank"</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(record)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[10], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> handle <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Entrez</span><span style="color:rgb(98,98,98)">.</span>efetch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(0,135,0)">id</span><span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">NG_017013.2</span><span style="color:rgb(175,0,0)">"</span>, rettype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">gb</span><span style="color:rgb(175,0,0)">"</span>, retmode<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">text</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      3</span> SeqIO<span style="color:rgb(98,98,98)">.</span>read(handle, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">genbank</span><span style="color:rgb(175,0,0)">"</span>)
-<span class="ansi-green-fg ansi-bold">      4</span> handle <span style="color:rgb(98,98,98)">=</span> Entrez<span style="color:rgb(98,98,98)">.</span>efetch(db<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">nucleotide</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(0,135,0)">id</span><span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">NC_050871.1</span><span style="color:rgb(175,0,0)">"</span>, rettype<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">gb</span><span style="color:rgb(175,0,0)">"</span>, retmode<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">text</span><span style="color:rgb(175,0,0)">"</span>)
-
-<span class="ansi-red-fg">NameError</span>: name 'Entrez' is not defined</pre>
-</div>
+<div id="e2970ce9" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NG_017013.2"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>handle <span class="op">=</span> Entrez.efetch(db<span class="op">=</span><span class="st">"nucleotide"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">"NC_050871.1"</span>, rettype<span class="op">=</span><span class="st">"gb"</span>, retmode<span class="op">=</span><span class="st">"text"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> SeqIO.read(handle, <span class="st">"genbank"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>SeqIO.write(record, <span class="st">"NG_017013.gbk"</span>, <span class="st">"genbank"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(record)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ID: NC_050871.1
+Name: NC_050871
+Description: Paphiopedilum hirsutissimum chloroplast, complete genome
+Database cross-references: BioProject:PRJNA927338
+Number of features: 253
+/molecule_type=DNA
+/topology=circular
+/data_file_division=PLN
+/date=03-APR-2023
+/accessions=['NC_050871']
+/sequence_version=1
+/keywords=['RefSeq']
+/source=chloroplast Paphiopedilum hirsutissimum
+/organism=Paphiopedilum hirsutissimum
+/taxonomy=['Eukaryota', 'Viridiplantae', 'Streptophyta', 'Embryophyta', 'Tracheophyta', 'Spermatophyta', 'Magnoliopsida', 'Liliopsida', 'Asparagales', 'Orchidaceae', 'Cypripedioideae', 'Paphiopedilum']
+/references=[Reference(title='Complete chloroplast genome sequences of an important horticultural orchid: Paphiopedilum hirsutissimum (Orchidaceae)', ...), Reference(title='Direct Submission', ...), Reference(title='Direct Submission', ...)]
+/comment=PROVISIONAL REFSEQ: This record has not yet been subject to final
+NCBI review. The reference sequence is identical to MN153815.
+COMPLETENESS: full length.
+/structured_comment=defaultdict(&lt;class 'dict'&gt;, {'Assembly-Data': {'Assembly Method': 'Geneious v. 2019.2.1', 'Assembly Name': 'LMY02', 'Coverage': '220', 'Sequencing Technology': 'Illumina'}})
+Seq('GTAAAAAATCCCCATATCTTACAAGATATGGGGATTTTTTACCTTCAAAAATTC...TTT')</code></pre>
 </div>
 </div>
 </div>
@@ -646,7 +656,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/introduction-to-biopython\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
